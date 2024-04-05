@@ -1,0 +1,36 @@
+<p>update-empleado works!</p>
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Registro de Empleado</h3>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Nombre: </label>
+            <input type="text"
+            class="form-control"
+            id="nombre"
+            [(ngModel)]= "empleado.nombre"
+            name="nombre"
+            >
+        </div>
+        <div class="form-group">
+            <label>Apellido: </label>
+            <input type="text"
+            class= "form-control"
+            id="apellido"
+            placeholder=""
+            [(ngModel)]= "empleado.apellido"
+            name="apellido"
+            >
+        </div>
+        <div class="form-group">
+            <label>Email: </label>
+            <input type="text"
+            class="form-control"
+            id="email"
+            [(ngModel)]= "empleado.email"
+            name="email"
+            >
+        </div>
+        
+        <button class="btn btn-success">Guardar</button>
+    </form>
+</div>
