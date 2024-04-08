@@ -20,15 +20,16 @@ export class UpdateEmpleadoComponent {
     this.empleadoService.getEmpleadoById(this.id).subscribe(data => {
       this.empleado = data;
     },error => console.log(error))
-
   }
+  
   goToEmpleadoList(){
     this.router.navigate(['/empleados']);
     swal('Empleado Actualizado', `Empleado ${this.empleado.nombre} actualizado con exito!`, 'success');
   }
 
-  onSubmit(){
+  onSubmit2(){
     this.empleadoService.updateEmpleado(this.empleado.id, this.empleado).subscribe( data => {
+      console.log(data);
       this.goToEmpleadoList();
     })
   }

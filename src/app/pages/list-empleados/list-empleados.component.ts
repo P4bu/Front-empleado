@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Empleado } from 'src/app/models/empleado';
 import { EmpleadoService } from 'src/app/service/empleado.service';
 
@@ -9,10 +9,11 @@ import { EmpleadoService } from 'src/app/service/empleado.service';
   styleUrls: ['./list-empleados.component.css']
 })
 export class ListEmpleadosComponent implements OnInit{
-
+  
+  id: number;
   empleados: Empleado[];
 
-  constructor(private empleadoService: EmpleadoService, private router: Router) {}
+  constructor(private empleadoService: EmpleadoService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getEmpleados();
@@ -23,12 +24,13 @@ export class ListEmpleadosComponent implements OnInit{
   }
 
   deleteEmpleado(id: number){
-    this.empleadoService.deleteEmpleado(id).subscribe( data => {
-      
+    this.empleadoService.delete(id).subscribe( data => {
+      console.log("Empleado eliminado");
       this.getEmpleados();
     })
-  
   }
+    
+  
 
   private getEmpleados(){
     this.empleadoService.getAllEmpleados().subscribe( data => {

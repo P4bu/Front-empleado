@@ -24,7 +24,7 @@ export class EmpleadoService {
 
   //metodo para actualizar un empleado
   updateEmpleado(id: number, empleado: Empleado): Observable<Object>{
-    return this.http.patch(`${this.url}/${id}`, empleado);
+    return this.http.patch<Empleado>(`${this.url}/${id}`, empleado);
   }
 
   //metodo para optener un empleado por id
@@ -33,8 +33,8 @@ export class EmpleadoService {
   }
 
   //metodo para eliminar un empleado
-  deleteEmpleado(id: number): Observable<Object> {
-    return this.http.delete(`${this.url}/${id}`)
+  delete(id: number): Observable<Object> {
+    return this.http.delete<Empleado>(`${this.url}/delete/${id}`);
   }
 
 }
